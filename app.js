@@ -13,8 +13,6 @@ const contractPancakeFactory = new Contract(
   bscProvider
 );
 
-console.log('Pancake Factory Subscribed!');
-
 //PancakeSwap Factory PairCreated event
 contractPancakeFactory.on('PairCreated', async (token0Addr, token1Addr, pairAddr) => {
 
@@ -30,3 +28,5 @@ contractPancakeFactory.on('PairCreated', async (token0Addr, token1Addr, pairAddr
   }
 
 });
+
+console.log('Pancake Factory Subscribed!');
