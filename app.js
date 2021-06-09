@@ -2,20 +2,15 @@ import { Contract, Wallet, providers }  from 'ethers';
 import * as BEP20 from './contract/BEP20/bep20.js';
 import * as PancakeFactory from './contract/pancake-v2/factory.js';
 
-//Put wallet mnemonic here
-const strWalletMnemonic = '';
 //BSC RPC endpoint URL
 const strJsonRpcProvider = 'https://bsc-dataseed2.defibit.io/';
 
 const bscProvider = new providers.JsonRpcProvider(strJsonRpcProvider);
-const walletMnemonic = Wallet.fromMnemonic(strWalletMnemonic);
-
-const walletInstance = walletMnemonic.connect(bscProvider);
 
 const contractPancakeFactory = new Contract(
   PancakeFactory.address,
   PancakeFactory.ABI,
-  walletInstance
+  bscProvider
 );
 
 console.log('Pancake Factory Subscribed!');
